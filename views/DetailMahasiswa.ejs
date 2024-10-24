@@ -1,0 +1,30 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-10">
+      <h2>Detail Contact</h2>
+      
+    <% if(mahasiswaById == "" || mahasiswaById == "Query Failed") { %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <div class="alert alert-danger" rol="alert">Detail Mahasiswa Yang Anda Cari Tidak Ada Di Database Kami Silahkan Tambahkan Data Baru Dulu</div>
+          <a href="/mahasiswa" class="btn btn-info">&laquo; Back</a>
+        </div>
+      </div>
+    <% } else { %>
+    <% mahasiswaById.forEach((result, i) => { %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Name : <%= result.nama %></h5>
+          <p class="card-text">Email : <%= result.email %></p>
+          <a href="/mahasiswa" class="btn btn-info">&laquo; Back</a>
+          <a href="/mahasiswa/edit/<%= result.id %>" class="btn btn-primary">Edit</a>
+          <a href="/mahasiswa/delete/<%= result.id %>" class="btn btn-danger" onclick="return confirm('Are You Sure?');">Delete</a>
+        </div>
+      </div>
+      
+  <% }) %>
+  <% } %>
+      
+    </div>
+  </div>
+</div>
